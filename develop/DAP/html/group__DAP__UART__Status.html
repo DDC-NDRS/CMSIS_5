@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>readme.txt File Reference</title>
-<title>CMSIS-NN: readme.txt File Reference</title>
+<title>DAP_UART_Status</title>
+<title>CMSIS-DAP: DAP_UART_Status</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="cmsis.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
@@ -32,10 +32,10 @@
  <tr style="height: 46px;">
   <td id="projectlogo"><img alt="Logo" src="CMSIS_Logo_Final.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">CMSIS-NN
-   &#160;<span id="projectnumber">Version 3.0.0</span>
+   <div id="projectname">CMSIS-DAP
+   &#160;<span id="projectnumber">Version 2.1.0</span>
    </div>
-   <div id="projectbrief">CMSIS NN Software Library</div>
+   <div id="projectbrief">Interface Firmware for CoreSight Debug Access Port</div>
   </td>
  </tr>
  </tbody>
@@ -90,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('cifar10_2readme_8txt.html','');});
+$(document).ready(function(){initNavTree('group__DAP__UART__Status.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('cifar10_2readme_8txt.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,15 +109,43 @@ $(document).ready(function(){initNavTree('cifar10_2readme_8txt.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">readme.txt File Reference</div>  </div>
+<div class="title">DAP_UART_Status<div class="ingroups"><a class="el" href="group__DAP__uart__gr.html">UART COM Commands</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Get UART status.  
+<a href="#details">More...</a></p>
+<p>Get UART status. </p>
+<h2>DAP_UART_Status (0x23): </h2>
+<p>Reads UART status (only for transport via DAP).</p>
+<p><b>DAP_UART_Status Request:</b> </p>
+<div class="fragment"><div class="line">| BYTE |</div>
+<div class="line">&gt; 0x23 |</div>
+<div class="line">|******|</div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd><a class="el" href="group__DAP__UART__Status.html">DAP_UART_Status</a> command can be used only if transport via DAP is enabled.<br/>
+</dd></dl>
+<p><b>DAP_UART_Status Response:</b> </p>
+<div class="fragment"><div class="line">| BYTE | BYTE   | WORD     | WORD     |</div>
+<div class="line">&gt; 0x23 | Status | Rx Count | Tx Count |</div>
+<div class="line">|******|********|**********|**********|</div>
+</div><!-- fragment --><ul>
+<li><b>Status</b>:<ul>
+<li>Bit 0: 1 = Receive enabled, 0 = Receive disabled</li>
+<li>Bit 1: 1 = Data lost detected during receive (automatically cleared)</li>
+<li>Bit 2: 1 = Framing error detected (automatically cleared)</li>
+<li>Bit 3: 1 = Parity error detected (automatically cleared)</li>
+<li>Bit 4: 1 = Transmit enabled, 0 = Transmit disabled</li>
+<li>Bit 7..5: reserved (0)</li>
+</ul>
+</li>
+<li><b>Rx Count</b>: Number of bytes in UART receive buffer (not yet read)</li>
+<li><b>Tx Count</b>: Number of bytes in UART transmit buffer (not yet transmitted) </li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="cifar10_2readme_8txt.html">readme.txt</a></li>
     <li class="footer">
       <script type="text/javascript">
         <!--
