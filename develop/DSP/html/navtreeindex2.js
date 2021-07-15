@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"group__MatrixVectMult.html#gac2d83078f35c9d0b42226404de20b137":[3,9,10,3],
 "group__MatrixVectMult.html#gad31a43da83affa509393cfab4c1248b8":[3,9,10,2],
 "group__Max.html":[3,11,5],
 "group__Max.html#ga504abf036854dc0c4a43bd9a27827863":[3,11,5,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__variance.html":[3,11,11],
 "group__variance.html#ga0ece08da589f4649bfa4c8445dc05132":[3,11,11,0],
 "group__variance.html#ga87a07c87c1d85104de0ea4a3d017454c":[3,11,11,3],
-"group__variance.html#gaae455544f0c8ac92469a1e25d3906515":[3,11,11,1],
-"group__variance.html#gaef3ebc6401209c3f93749e08d341ab48":[3,11,11,2]
+"group__variance.html#gaae455544f0c8ac92469a1e25d3906515":[3,11,11,1]
 };
