@@ -1,3 +1,3 @@
 function writeFooter()  {
-    document.write('Generated on Thu Aug 12 2021 05:51:18 for CMSIS-Driver Version 2.8.0 by Arm Ltd. All rights reserved.');
+    document.write('Generated on Tue Aug 17 2021 12:06:41 for CMSIS-Driver Version 2.8.0 by Arm Ltd. All rights reserved.');
 };
